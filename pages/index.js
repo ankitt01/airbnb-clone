@@ -3,8 +3,8 @@ import Header from '../components/Header'
 import Banner from '../components/Banner'
 import Smallcard from '../components/Smallcard'
 
-export default function Home() {
-  const exploreData =[{"img":"https://links.papareact.com/5j2","location":"London","distance":"45-minute drive"},{"img":"https://links.papareact.com/1to","location":"Manchester","distance":"4.5-hour drive"},{"img":"https://links.papareact.com/40m","location":"Liverpool","distance":"4.5-hour drive"},{"img":"https://links.papareact.com/msp","location":"York","distance":"4-hour drive"},{"img":"https://links.papareact.com/2k3","location":"Cardiff","distance":"45-minute drive"},{"img":"https://links.papareact.com/ynx","location":"Birkenhead","distance":"4.5-hour drive"},{"img":"https://links.papareact.com/kji","location":"Newquay","distance":"6-hour drive"},{"img":"https://links.papareact.com/41m","location":"Hove","distance":"2-hour drive"}]
+export default function Home({exploreData}) {
+  
   
   return (
     <div>
@@ -21,7 +21,7 @@ export default function Home() {
           <h2 className="text-4xl font-semibold pb-5">Explore Nearby</h2>
           {/* Server side rendering */}
           {exploreData.map(item => {
-              <Smallcard img={item.img} distance={item.distance} location = {item.location} />
+            return <Smallcard key={item.img } img={item.img} distance={item.distance} location = {item.location} />
           })}
         </section>
       </main>
@@ -30,3 +30,14 @@ export default function Home() {
 }
 
 
+export async function getStaticProps() {
+  const exploreData = await fetch('https://links.papareact.com/pyp').then( 
+    (res) => res.json()
+  );
+
+  return {
+    props: {
+      exploreData,
+    }
+  }
+}
