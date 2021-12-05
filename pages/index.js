@@ -2,8 +2,9 @@ import Head from 'next/head'
 import Header from '../components/Header'
 import Banner from '../components/Banner'
 import Smallcard from '../components/Smallcard'
+import MediumCard from '../components/MediumCard'
 
-export default function Home({exploreData}) {
+export default function Home({exploreData, cardsData}) {
   
   
   return (
@@ -20,9 +21,20 @@ export default function Home({exploreData}) {
         <section className="pt-6">
           <h2 className="text-4xl font-semibold pb-5">Explore Nearby</h2>
           {/* Server side rendering */}
-          {exploreData.map(item => {
-            return <Smallcard key={item.img } img={item.img} distance={item.distance} location = {item.location} />
-          })}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {exploreData?.map(item => {
+              return <Smallcard key={item.img} img={item.img} distance={item.distance} location = {item.location} />
+            })}
+          </div>
+        </section>
+
+        <section>
+          <h2 className="text-4xl font-semibold py-8">Live Anywhere</h2>
+          <div className="flex space-x-3 overflow-scroll scrollbar-hide p-3 -ml-3">
+            {cardsData?.map(item => (
+              <MediumCard key={item.img} img={item.img} title={item.title}/>
+            ))}
+          </div>
         </section>
       </main>
     </div>
@@ -35,9 +47,14 @@ export async function getStaticProps() {
     (res) => res.json()
   );
 
+  const cardsData = await fetch('https://links.papareact.com/zp1').then(
+    (res) => res.json()
+  )
+
   return {
     props: {
       exploreData,
+      cardsData,
     }
   }
 }
