@@ -3,6 +3,7 @@ import Image from 'next/image'
 import {SearchIcon, GlobeAltIcon, MenuIcon, UserCircleIcon, UsersIcon} from '@heroicons/react/solid'
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
+import {DateRange} from 'react-date-range'
 import {DateRangePicker} from 'react-date-range'
 
 function Header() {
@@ -51,7 +52,15 @@ function Header() {
 
             {searchInput && (
                 <div className="flex flex-col col-span-3 mx-auto">
-                    <DateRangePicker ranges={[selectionRange]} minDate={new Date()} rangeColors={["#FD5B61"]} onChange={handleSelect} />
+
+                    <div className="sm:hidden">
+                        <DateRange ranges={[selectionRange]} minDate={new Date()} 
+                        rangeColors={["#FD5B61"]} onChange={handleSelect}  />
+                    </div>
+                    <div className="hidden sm:inline-block">
+                        <DateRangePicker ranges={[selectionRange]} minDate={new Date()} 
+                        rangeColors={["#FD5B61"]} onChange={handleSelect} />
+                    </div>
                     <div className="flex items-center border-b mb-4 pb-2">
                         <h2 className="text-2xl flex-grow font-semibold">Number of Guests</h2>
 
