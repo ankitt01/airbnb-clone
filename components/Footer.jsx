@@ -2,9 +2,9 @@ import React from 'react'
 
 function Footer() {
     return (
-        <section className="bg-gray-100"> 
-        <div className="grid md:grid-cols-4 gap-y-10 px-32 py-14 bg-gray-100 text-gray-600">
-            <div className="space-y-4 text-xs text-gray-800">
+        <section className="bg-gray-200"> 
+        <div className="grid md:grid-cols-4 gap-y-10  py-14 bg-gray-200 text-gray-600   ">
+            <div className="space-y-4 text-xs text-gray-800 px-12 lg:mx-auto lg:px-0">
                 <h5 className="font-bold">Support</h5>
                 <p>Help Centre</p>
                 <p>Safety information</p>
@@ -13,14 +13,14 @@ function Footer() {
                 <p>Supporting people with disabilities</p>
                 <p>Report a neighbourhood concern</p>
             </div>
-            <div className="space-y-4 text-xs text-gray-800">
+            <div className="space-y-4 text-xs text-gray-800 px-12 lg:mx-auto lg:px-0">
                 <h5 className="font-bold">Community</h5>
                 <p>Airbnb.org: disaster relief housing</p>
                 <p>Support Afghan refugees</p>
                 <p>Celebrating diversity & belonging</p>
                 <p>Combating discrimination</p>
             </div>
-            <div className="space-y-4 text-xs text-gray-800">
+            <div className="space-y-4 text-xs text-gray-800 px-12 lg:mx-auto lg:px-0">
                 <h5 className="font-bold">Hosting</h5>
                 <p>Try hosting</p>
                 <p>AirCover: protection for Hosts</p>
@@ -28,7 +28,7 @@ function Footer() {
                 <p>Visit our community forum</p>
                 <p>How to host responsibly</p>
             </div>
-            <div className="space-y-4 text-xs text-gray-800">
+            <div className="space-y-4 text-xs text-gray-800 px-12 lg:mx-auto lg:px-0">
                 <h5 className="font-bold">ABOUT</h5>
                 <p>Newsroom</p>
                 <p>Learn about new features</p>
