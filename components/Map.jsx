@@ -1,13 +1,13 @@
 import React, {useState} from 'react'
 import ReactMapGL, {Marker, Popup} from 'react-map-gl';
-// import getCenter from 'geolib/es/getCenter'
+// import {getCenter} from 'geolib/es/getCenter'
 import * as geolib from 'geolib';
 
 
 function Map({searchResults}) {
 
     
-
+    const [selectedLocation, setSelectedLocation] = useState({})
 
     //Transform the search result object into the lang lat object
 
@@ -34,7 +34,20 @@ function Map({searchResults}) {
             {...viewport}
             onViewportChange={(nextViewport) => setViewport(nextViewport)}
         >
+            {searchResults.map(result => (
+                <div key={result.long}>
+                    <Marker
+                        longitude={result.long}
+                        latitude={result.lat}
+                        offset={-10}
+                    >
+                        <p className='cursor-pointer text-2xl animate-bounce' onClick={() => setSelectedLocation(result)} aria-label="push-pin">📌</p>
+                    </Marker>
+                    {/* Popup */}
 
+                    {selectedLocation.long === result.long ? <Popup closeOnClick={true} onClose={() => setSelectedLocation({})} latitude={result.lat} longitude={result.long}>{result.title}</Popup> : false}
+                </div>
+            ))}
         </ReactMapGL>
     )
 }
